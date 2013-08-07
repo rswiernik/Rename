@@ -23,13 +23,16 @@ totalReplacements = 0
 for i in range(2,len(sys.argv)):
 	with open(sys.argv[i], 'r') as f:
 		newlines = []
+		linenum = 0
 		for line in f.readlines():
+			linenum += 1
 			for x in oldVar:
 				#print "[" + x + "],[" + newVar[oldVar.index(x)] + "]"
 				oldline = line
 				line = line.replace(x,newVar[oldVar.index(x)])
 				if(oldline != line):
 					totalReplacements += 1
+					print "line " + str(linenum) + ": [" + x + "],[" + newVar[oldVar.index(x)] + "]"
 			newlines.append(line)
 
 	with open(sys.argv[i], 'w') as f:
