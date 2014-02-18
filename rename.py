@@ -1,7 +1,13 @@
+#!/usr/bin/python
+
 import sys
 
 oldVar = []
 newVar = []
+
+if(len(sys.argv) != 3):
+	print "Usage: ./rename.py <file1> <file2>"
+	exit()
 
 with open(sys.argv[1], 'r') as f:
 	for line in f.readlines():
@@ -27,7 +33,7 @@ for i in range(2,len(sys.argv)):
 		for line in f.readlines():
 			linenum += 1
 			for x in oldVar:
-				#print "[" + x + "],[" + newVar[oldVar.index(x)] + "]"
+				# print "[" + x + "],[" + newVar[oldVar.index(x)] + "]"
 				oldline = line
 				line = line.replace(x,newVar[oldVar.index(x)])
 				if(oldline != line):
